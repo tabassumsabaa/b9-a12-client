@@ -4,6 +4,8 @@ import {
 import Main from "../LayOut/Main";
 import Home from "../Pages/Home/Home/Home";
 import Surveys from "../Pages/Shared/Surveys/Surveys";
+import Login from "../Pages/Login/Login";
+import SingUp from "../Pages/SingUp/SingUp";
 
 export const router = createBrowserRouter([
   {
@@ -17,7 +19,15 @@ export const router = createBrowserRouter([
         {
             path: "/suurveys",
             element: <Surveys></Surveys>
-        }
+        },
+        {
+            path: "login",
+            element: <Login></Login>
+        },
+        {
+            path: "singup",
+            element: <SingUp></SingUp>
+        },
     ]
   },
 ]);

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { CgMoreO } from "react-icons/cg";
 
 
 const SurveyCart = ({survey,  showDetailsButton = true}) => {
@@ -14,7 +15,9 @@ const SurveyCart = ({survey,  showDetailsButton = true}) => {
                     <div className="card-actions">
                        {showDetailsButton && (
                             <Link to="">
-                                <button className=" btn btn-xs sm:btn-sm md:btn-md border-b-4 border-orange-400 ">View Details</button>
+                                <button className=" btn btn-xs sm:btn-sm md:btn-md border-b-4 border-orange-400 ">View Details 
+                                    <CgMoreO></CgMoreO>
+                                </button>
                             </Link>
                         )}
                                                 
