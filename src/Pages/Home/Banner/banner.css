@@ -1,0 +1,9 @@
+
+.carousel{
+    display: flex;
+    align-items: center;
+}
+.carousel.carousel-slider .control-arrow{
+    background: #b3aeae;
+    height: auto;
+}
