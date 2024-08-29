@@ -17,13 +17,14 @@ const NavBar = () => {
         <Link ><li><a>FAQ's</a></li></Link>        
         <li>
             <details>
-                <summary>DashBoard</summary>
-                <ul className="p-2">
+                <summary>Features</summary>
+                <ul className="p-2 text-black">
                     <li><a>Submenu 1</a></li>
                     <li><a>Submenu 2</a></li>
                 </ul>
             </details>
-        </li>        
+        </li>
+        <Link to='/dashboard'><li><a>Dashboard</a></li></Link>        
     </>
     return (
         <div>

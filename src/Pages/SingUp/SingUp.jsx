@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import signImg from "../../assets/Image/sing.avif";
 import { MdFlood } from "react-icons/md";
+import Swal from "sweetalert2";
 
 const SingUp = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const { signIn, googleSignIn } = useContext(AuthContext);
+    const {  createUser, googleSignIn } = useContext(AuthContext);
 
     const handleSignUp = e => {
         e.preventDefault();
@@ -18,14 +19,21 @@ const SingUp = () => {
         const password = form.password.value;
         console.log(name, email, password);
 
-        signIn(email, password)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        createUser(email, password)  // Use createUser to sign up a new user
+        .then(result => {
+            const user = result.user;
+            console.log("User created:", user);
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: `${user.email} User Created Successfully`,
+                showConfirmButton: false,
+                timer: 1500
+              });
+        })
+        .catch(error => {
+            console.error("Sign-Up Error:", error);
+        });
     }
     const handleGoogleSignIn = () => {
         googleSignIn()
