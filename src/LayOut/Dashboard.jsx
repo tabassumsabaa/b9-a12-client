@@ -2,16 +2,18 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { IoMdHome } from "react-icons/io";
 import { TbReportSearch } from "react-icons/tb";
 import { MdCoPresent } from "react-icons/md";
-import { FaCommentDots } from "react-icons/fa";
+import { FaCommentDots, FaPoll, FaUserEdit, FaUserTie } from "react-icons/fa";
 import { MdAddComment } from "react-icons/md";
 import { RiContactsBook3Fill } from "react-icons/ri";
 import { TbHelpOctagonFilled } from "react-icons/tb";
 import useCart from '../Hooks/useCart';
 import useReport from '../Hooks/useReport';
+import AdminUser from '../Pages/DashboardElements/AdminDash/AdminUser';
 
 const Dashboard = () => {
     const [cart] = useCart();
     const [report] = useReport();
+    const [users] = AdminUser();
     const isAdmin = true;
     return (
         <div className='flex'>
@@ -23,6 +25,30 @@ const Dashboard = () => {
                 <ul className="category p-4 space-y-2">
                     {
                         isAdmin ? <>
+                            <li>
+                                <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='adminHome'>
+                                    <IoMdHome></IoMdHome>
+                                    Admin Home
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='admin/users'>
+                                    <FaUserTie></FaUserTie>
+                                    Manage Users ({users.length})
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='admin/surveys'>
+                                    <FaUserEdit></FaUserEdit>
+                                    Manage Surveys
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='admin/payments'>
+                                    <FaPoll></FaPoll>
+                                    View Payments
+                                </NavLink>
+                            </li>
                         </>
                             : <>
                                 <li>

@@ -13,6 +13,10 @@ import Reports from "../Pages/DashboardElements/UsersDash/Reports";
 import Comments from "../Pages/DashboardElements/UsersDash/Comments";
 import UserSurveys from "../Pages/DashboardElements/UsersDash/UserSurveys";
 import SurveysDetails from "../Pages/Shared/Surveys/SurveysDetails";
+import AdminHome from "../Pages/DashboardElements/AdminDash/AdminHome";
+import AdminUser from "../Pages/DashboardElements/AdminDash/AdminUser";
+import AdminSurveys from "../Pages/DashboardElements/AdminDash/AdminSurveys";
+import AdminPayments from "../Pages/DashboardElements/AdminDash/AdminPayments";
 
 
 
@@ -65,7 +69,24 @@ export const router = createBrowserRouter([
         {
             path: "user/comments",
             element: <PrivateRoute><Comments></Comments></PrivateRoute>
-        }
+        },
+        // admin routes
+        {
+            path: "adminHome",
+            element: <PrivateRoute><AdminHome></AdminHome></PrivateRoute>
+        },
+        {
+            path: "admin/users",
+            element: <PrivateRoute><AdminUser></AdminUser></PrivateRoute>
+        },
+        {
+            path: "admin/surveys",
+            element: <PrivateRoute><AdminSurveys></AdminSurveys></PrivateRoute>
+        },
+        {
+            path: "admin/payments",
+            element: <PrivateRoute><AdminPayments></AdminPayments></PrivateRoute>
+        },
     ]
   }
 ]);
