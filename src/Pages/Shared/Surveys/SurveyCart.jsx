@@ -3,7 +3,7 @@ import { CgMoreO } from "react-icons/cg";
 
 
 const SurveyCart = ({survey,  showDetailsButton = true}) => {
-    const {city, title, homelessPeople, totalVotes} = survey;
+    const {_id, city, title, homelessPeople, totalVotes} = survey;
     return (
         <div className="my-7">
             <div className="card bg-base-100 w-96 shadow-xl border-t-4 border-orange-400">
@@ -14,7 +14,7 @@ const SurveyCart = ({survey,  showDetailsButton = true}) => {
                     <h1 className="font-medium">Total Vote: <span className="text-orange-400 font-bold">{totalVotes}</span></h1>
                     <div className="card-actions">
                        {showDetailsButton && (
-                            <Link to="">
+                            <Link to={`/suurveys/${_id}`}>
                                 <button className=" btn btn-xs sm:btn-sm md:btn-md border-b-4 border-orange-400 ">View Details 
                                     <CgMoreO></CgMoreO>
                                 </button>

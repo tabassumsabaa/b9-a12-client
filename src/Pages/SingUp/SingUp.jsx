@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import signImg from "../../assets/Image/sing.avif";
 import { MdFlood } from "react-icons/md";
@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 const SingUp = () => {
     const [showPassword, setShowPassword] = useState(false);
     const {  createUser, googleSignIn } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleSignUp = e => {
         e.preventDefault();
@@ -30,6 +31,7 @@ const SingUp = () => {
                 showConfirmButton: false,
                 timer: 1500
               });
+              navigate('/login');
         })
         .catch(error => {
             console.error("Sign-Up Error:", error);

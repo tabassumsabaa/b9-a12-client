@@ -3,7 +3,7 @@
 const UserHome = () => {
     return (
         <div>
-            <h2>hi</h2>
+            <h2>hi welcome</h2>
         </div>
     );
 };

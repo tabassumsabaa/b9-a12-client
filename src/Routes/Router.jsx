@@ -11,6 +11,8 @@ import Dashboard from "../LayOut/Dashboard";
 import UserHome from "../Pages/DashboardElements/UsersDash/UserHome";
 import Reports from "../Pages/DashboardElements/UsersDash/Reports";
 import Comments from "../Pages/DashboardElements/UsersDash/Comments";
+import UserSurveys from "../Pages/DashboardElements/UsersDash/UserSurveys";
+import SurveysDetails from "../Pages/Shared/Surveys/SurveysDetails";
 
 
 
@@ -35,7 +37,11 @@ export const router = createBrowserRouter([
         {
             path: "singup",
             element: <SingUp></SingUp>
-        },       
+        },     
+        {
+            path: 'suurveys/:id',
+            element: <SurveysDetails></SurveysDetails>
+        },  
     ]
   },
   {
@@ -44,19 +50,20 @@ export const router = createBrowserRouter([
     children:[
         // user routes
         {
-            path: '/dashboard/userHome',
+            path: 'userHome',
             element: <PrivateRoute><UserHome></UserHome></PrivateRoute>
         },
         {
-            path: '/dashboard/user/surveys',
+            path: 'user/surveys',
+            element: <PrivateRoute><UserSurveys></UserSurveys></PrivateRoute>
+        },
+        
+        {
+            path: 'user/reports',
             element: <PrivateRoute><Reports></Reports></PrivateRoute>
         },
         {
-            path: '/dashboard/user/reports',
-            element: <PrivateRoute><UserHome></UserHome></PrivateRoute>
-        },
-        {
-            path: "/dashboard/user/comments",
+            path: "user/comments",
             element: <PrivateRoute><Comments></Comments></PrivateRoute>
         }
     ]

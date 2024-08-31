@@ -6,8 +6,12 @@ import { FaCommentDots } from "react-icons/fa";
 import { MdAddComment } from "react-icons/md";
 import { RiContactsBook3Fill } from "react-icons/ri";
 import { TbHelpOctagonFilled } from "react-icons/tb";
+import useCart from '../Hooks/useCart';
+import useReport from '../Hooks/useReport';
 
 const Dashboard = () => {
+    const [cart] = useCart();
+    const [report] = useReport();
     return (
         <div className='flex'>
             {/* dashboard side bar */}
@@ -17,22 +21,22 @@ const Dashboard = () => {
                 </div>
                 <ul className="category p-4 space-y-2">
                     <li>
-                        <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='/dashboard/userHome'>
+                        <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='userHome'>
                         <IoMdHome></IoMdHome>
                         Home</NavLink>
                     </li>
                     <li>
-                        <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='(/dashboard/user/surveys'>
+                        <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='user/surveys'>
                         <MdCoPresent></MdCoPresent>
-                        Participate</NavLink>
+                        Participate ({cart.length})</NavLink>
                     </li>
                     <li>
-                        <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='/dashboard/user/reports'>
+                        <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='user/reports'>
                         <TbReportSearch></TbReportSearch>
-                        Reports</NavLink>
+                        Reports({report.length}) </NavLink>
                     </li>
                     <li>
-                        <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='/dashboard/user/comments'>
+                        <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='user/comments'>
                         <FaCommentDots></FaCommentDots>
                         Comments</NavLink>
                     </li>
@@ -60,7 +64,7 @@ const Dashboard = () => {
                 </ul>
             </div>
             {/* dashboard content */}
-            <div className='flex-1'>
+            <div className='flex-1 p-10'>
                 <Outlet></Outlet>
             </div>
         </div>
