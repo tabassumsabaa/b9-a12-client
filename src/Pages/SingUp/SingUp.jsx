@@ -6,10 +6,12 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import signImg from "../../assets/Image/sing.avif";
 import { MdFlood } from "react-icons/md";
 import Swal from "sweetalert2";
+import useAxiosOpen from "../../Hooks/useAxiosOpen";
 
 const SingUp = () => {
+    const axiosOpen = useAxiosOpen();
     const [showPassword, setShowPassword] = useState(false);
-    const {  createUser, googleSignIn } = useContext(AuthContext);
+    const { createUser, googleSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleSignUp = e => {
@@ -21,27 +23,48 @@ const SingUp = () => {
         console.log(name, email, password);
 
         createUser(email, password)  // Use createUser to sign up a new user
-        .then(result => {
-            const user = result.user;
-            console.log("User created:", user);
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: `${user.email} User Created Successfully`,
-                showConfirmButton: false,
-                timer: 1500
-              });
-              navigate('/login');
-        })
-        .catch(error => {
-            console.error("Sign-Up Error:", error);
-        });
+            .then(result => {
+                const user = result.user;
+                console.log("User created:", user);
+
+                const userInfo = {
+                    name, email, password
+                }
+                axiosOpen.post("/users", userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            console.log("user added to the database");
+                            
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: `${user.email} User Created Successfully`,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            navigate('/login');
+                        }
+                    })
+
+            })
+            .catch(error => {
+                console.error("Sign-Up Error:", error);
+            });
     }
     const handleGoogleSignIn = () => {
         googleSignIn()
-            .then(result => {
-                const user = result.user;
-                console.log(user);
+            .then(result => {               
+                console.log(result.user);
+                const userInfo ={
+                    email: result.user?.email,
+                    name: result.user?.displayName,                   
+                    lastSignInTime: result.user?.metadata?.lastSignInTime,
+                }
+                axiosOpen.post("/users", userInfo)
+                .then(res => {
+                    console.log(res.data);
+                    navigate("/")                    
+                })
             })
             .catch(error => {
                 console.error('Google Sign-In Error:', error);
@@ -56,9 +79,9 @@ const SingUp = () => {
             <div className="hero-content flex-col lg:flex-row-reverse my-6">
                 <div className="text-center md:w-1/2 lg:text-left py-6">
                     <Link to="/">
-                      <button className="btn btn-active text-orange-500 bg-white flex justify-center items-center m-auto mb-10 text-5xl">
-                          <MdFlood></MdFlood>
-                      </button>
+                        <button className="btn btn-active text-orange-500 bg-white flex justify-center items-center m-auto mb-10 text-5xl">
+                            <MdFlood></MdFlood>
+                        </button>
                     </Link>
                     <img src={signImg} alt="" />
                 </div>

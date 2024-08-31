@@ -1,11 +1,11 @@
-import React from 'react';
+import axios from 'axios';
+
 
 const useAxiosOpen = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+    const axiosOpen = axios.create({
+        baseURL: 'http://localhost:5000'
+    })
+    return axiosOpen;
 };
 
 export default useAxiosOpen;

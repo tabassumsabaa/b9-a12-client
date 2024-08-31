@@ -12,6 +12,7 @@ import useReport from '../Hooks/useReport';
 const Dashboard = () => {
     const [cart] = useCart();
     const [report] = useReport();
+    const isAdmin = true;
     return (
         <div className='flex'>
             {/* dashboard side bar */}
@@ -20,46 +21,53 @@ const Dashboard = () => {
                     <h2 className='text-center text-2xl p-2 font-bold border-2 border-black m-5'>Civic Survey</h2>
                 </div>
                 <ul className="category p-4 space-y-2">
-                    <li>
-                        <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='userHome'>
-                        <IoMdHome></IoMdHome>
-                        Home</NavLink>
-                    </li>
-                    <li>
-                        <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='user/surveys'>
-                        <MdCoPresent></MdCoPresent>
-                        Participate ({cart.length})</NavLink>
-                    </li>
-                    <li>
-                        <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='user/reports'>
-                        <TbReportSearch></TbReportSearch>
-                        Reports({report.length}) </NavLink>
-                    </li>
-                    <li>
-                        <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='user/comments'>
-                        <FaCommentDots></FaCommentDots>
-                        Comments</NavLink>
-                    </li>
+                    {
+                        isAdmin ? <>
+                        </>
+                            : <>
+                                <li>
+                                    <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='userHome'>
+                                        <IoMdHome></IoMdHome>
+                                        Home</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='user/surveys'>
+                                        <MdCoPresent></MdCoPresent>
+                                        Participate ({cart.length})</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='user/reports'>
+                                        <TbReportSearch></TbReportSearch>
+                                        Reports({report.length}) </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='user/comments'>
+                                        <FaCommentDots></FaCommentDots>
+                                        Comments</NavLink>
+                                </li>
+                            </>
+                    }
+                    {/* shared */}
                     <div className="divider"></div>
                     <li>
                         <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='/'>
-                        <IoMdHome></IoMdHome>
-                        Home</NavLink>
+                            <IoMdHome></IoMdHome>
+                            Home</NavLink>
                     </li>
                     <li>
                         <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='/'>
-                        <MdAddComment></MdAddComment>
-                        About Us</NavLink>
+                            <MdAddComment></MdAddComment>
+                            About Us</NavLink>
                     </li>
                     <li>
                         <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='/'>
-                        <RiContactsBook3Fill></RiContactsBook3Fill>
-                        Contact Us</NavLink>
+                            <RiContactsBook3Fill></RiContactsBook3Fill>
+                            Contact Us</NavLink>
                     </li>
                     <li>
                         <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='/'>
-                        <TbHelpOctagonFilled></TbHelpOctagonFilled>
-                        HelpCente</NavLink>
+                            <TbHelpOctagonFilled></TbHelpOctagonFilled>
+                            HelpCente</NavLink>
                     </li>
                 </ul>
             </div>
