@@ -19,7 +19,7 @@ const NavBar = () => {
             <details>
                 <summary>Features</summary>
                 <ul className="p-2 text-black">
-                    <li><a>Submenu 1</a></li>
+                    <Link to="work"><li><a>How To Work</a></li></Link>
                     <li><a>Submenu 2</a></li>
                 </ul>
             </details>

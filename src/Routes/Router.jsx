@@ -20,6 +20,7 @@ import AdminPayments from "../Pages/DashboardElements/AdminDash/AdminPayments";
 import SurveyorHome from "../Pages/DashboardElements/SurveyorDash/SurveyorHome";
 import SurveyorMake from "../Pages/DashboardElements/SurveyorDash/SurveyorMake";
 import SurveyorsSurveys from "../Pages/DashboardElements/SurveyorDash/SurveyorsSurveys";
+import Work from "../Pages/Home/Work/Work";
 
 
 
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
         {
             path: "/suurveys",
             element: <Surveys></Surveys>
+        },
+        {
+            path: "work",
+            element: <Work></Work>
         },
         {
             path: "login",
