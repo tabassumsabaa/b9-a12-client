@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { IoMdHome } from "react-icons/io";
 import { TbReportSearch } from "react-icons/tb";
 import { MdCoPresent } from "react-icons/md";
@@ -8,13 +8,29 @@ import { RiContactsBook3Fill } from "react-icons/ri";
 import { TbHelpOctagonFilled } from "react-icons/tb";
 import useCart from '../Hooks/useCart';
 import useReport from '../Hooks/useReport';
-import AdminUser from '../Pages/DashboardElements/AdminDash/AdminUser';
+import { useEffect } from 'react';
+import { BiBookContent, BiCategory } from 'react-icons/bi';
+import useSurveyor from '../Hooks/useSurveyor';
+import useAdmin from '../Hooks/useAdmin';
+
 
 const Dashboard = () => {
     const [cart] = useCart();
     const [report] = useReport();
-    const [users] = AdminUser();
-    const isAdmin = true;
+    const [isSurveyor] = useSurveyor();
+    const [isAdmin] = useAdmin();
+    const isUser = !isAdmin && !isSurveyor;
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (isAdmin) {
+            navigate('/dashboard/adminHome'); // Redirect to Admin Dashboard
+        } else if (isSurveyor) {
+            navigate('/dashboard/surveyor'); // Redirect to Surveyor Dashboard
+        }
+        //  else if (isUser) {
+        //     navigate('/dashboard/users'); // Redirect to User Dashboard )} 
+        // }
+    }, [isAdmin, isSurveyor, isUser, navigate]);
     return (
         <div className='flex'>
             {/* dashboard side bar */}
@@ -23,8 +39,32 @@ const Dashboard = () => {
                     <h2 className='text-center text-2xl p-2 font-bold border-2 border-black m-5'>Civic Survey</h2>
                 </div>
                 <ul className="category p-4 space-y-2">
-                    {
-                        isAdmin ? <>
+                    {/* Surveyor Links */}
+                    {isSurveyor && (
+                        <>
+                            <li>
+                                <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='surveyor'>
+                                    <IoMdHome></IoMdHome>
+                                    Surveyor Home
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='surveyor/create'>
+                                    <BiCategory></BiCategory>
+                                    Create Survey
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='surveyor/surveys'>
+                                    <BiBookContent></BiBookContent>
+                                    View Surveys
+                                </NavLink>
+                            </li>
+                        </>
+                    )}
+                     {/* Admin Links */}
+                    {isAdmin && ( 
+                        <>
                             <li>
                                 <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='adminHome'>
                                     <IoMdHome></IoMdHome>
@@ -34,7 +74,7 @@ const Dashboard = () => {
                             <li>
                                 <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='admin/users'>
                                     <FaUserTie></FaUserTie>
-                                    Manage Users ({users.length})
+                                    Manage Users
                                 </NavLink>
                             </li>
                             <li>
@@ -50,9 +90,13 @@ const Dashboard = () => {
                                 </NavLink>
                             </li>
                         </>
-                            : <>
+                    )}
+                        
+                    {/* User Links */}
+                    {isUser && (
+                        <>
                                 <li>
-                                    <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='userHome'>
+                                    <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='user/Home'>
                                         <IoMdHome></IoMdHome>
                                         Home</NavLink>
                                 </li>
@@ -71,8 +115,9 @@ const Dashboard = () => {
                                         <FaCommentDots></FaCommentDots>
                                         Comments</NavLink>
                                 </li>
-                            </>
-                    }
+                        </>
+                    )}    
+                    
                     {/* shared */}
                     <div className="divider"></div>
                     <li>

@@ -22,7 +22,7 @@ const SingUp = () => {
         const password = form.password.value;
         console.log(name, email, password);
 
-        createUser(email, password)  // Use createUser to sign up a new user
+        createUser(email, password)  
             .then(result => {
                 const user = result.user;
                 console.log("User created:", user);
@@ -38,11 +38,11 @@ const SingUp = () => {
                             Swal.fire({
                                 position: "top-end",
                                 icon: "success",
-                                title: `${user.email} User Created Successfully`,
+                                title: `${user?.email} User Created Successfully`,
                                 showConfirmButton: false,
                                 timer: 1500
                             });
-                            navigate('/login');
+                            navigate('/');
                         }
                     })
 

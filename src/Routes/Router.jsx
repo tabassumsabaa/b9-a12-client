@@ -17,6 +17,9 @@ import AdminHome from "../Pages/DashboardElements/AdminDash/AdminHome";
 import AdminUser from "../Pages/DashboardElements/AdminDash/AdminUser";
 import AdminSurveys from "../Pages/DashboardElements/AdminDash/AdminSurveys";
 import AdminPayments from "../Pages/DashboardElements/AdminDash/AdminPayments";
+import SurveyorHome from "../Pages/DashboardElements/SurveyorDash/SurveyorHome";
+import SurveyorMake from "../Pages/DashboardElements/SurveyorDash/SurveyorMake";
+import SurveyorsSurveys from "../Pages/DashboardElements/SurveyorDash/SurveyorsSurveys";
 
 
 
@@ -54,8 +57,8 @@ export const router = createBrowserRouter([
     children:[
         // user routes
         {
-            path: 'userHome',
-            element: <PrivateRoute><UserHome></UserHome></PrivateRoute>
+            path: 'user/Home',
+            element: <UserHome></UserHome>
         },
         {
             path: 'user/surveys',
@@ -77,7 +80,7 @@ export const router = createBrowserRouter([
         },
         {
             path: "admin/users",
-            element: <PrivateRoute><AdminUser></AdminUser></PrivateRoute>
+            element: <PrivateRoute> <AdminUser></AdminUser></PrivateRoute>
         },
         {
             path: "admin/surveys",
@@ -87,6 +90,19 @@ export const router = createBrowserRouter([
             path: "admin/payments",
             element: <PrivateRoute><AdminPayments></AdminPayments></PrivateRoute>
         },
+        // surveyor
+        {
+            path: "surveyor",
+            element: <PrivateRoute><SurveyorHome></SurveyorHome></PrivateRoute>
+        },
+        {
+            path: "surveyor/create",
+            element: <PrivateRoute><SurveyorMake></SurveyorMake></PrivateRoute>
+        },
+        {
+            path: "surveyor/surveys",
+            element: <PrivateRoute><SurveyorsSurveys></SurveyorsSurveys></PrivateRoute>
+        }
     ]
   }
 ]);

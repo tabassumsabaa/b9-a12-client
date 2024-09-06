@@ -1,12 +1,11 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+
+import { RxCrossCircled } from 'react-icons/rx';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
-import { RxCrossCircled } from "react-icons/rx";
-import { FiEdit } from "react-icons/fi";
+import { useQuery } from '@tanstack/react-query';
+import { FiEdit } from 'react-icons/fi';
 import Swal from 'sweetalert2';
 
-
-const AdminUser = () => {
+const SurveyorHome = () => {
     const axiosSecure = useAxiosSecure();
     const {data: users = [], refetch} = useQuery({
         queryKey: ['users'],
@@ -14,27 +13,9 @@ const AdminUser = () => {
             const res = await axiosSecure.get("/users");
             return res.data;
         }
-    })
-
-    // const handleMakeSurveyor = user =>{
-    //     axiosSecure.patch(`/users/suveyor/${user._id}`)
-    //     .then( res =>{
-    //         console.log(res.data);
-    //         if (res.data.modifiedCount > 0) {
-    //             refetch();
-    //             Swal.fire({
-    //                 position: "top-end",
-    //                 icon: "success",
-    //                 title: `${user.name} is an Admin now.`,
-    //                 showConfirmButton: false,
-    //                 timer: 1500
-    //               });
-    //         }
-    //     })
-    // }
-
-    const handleMakeAdmin = user =>{
-        axiosSecure.patch(`/users/admin/${user._id}`)
+    });
+     const handleMakeSurveyor = user =>{
+        axiosSecure.patch(`/users/surveyor/${user._id}`)
         .then( res =>{
             console.log(res.data);
             if (res.data.modifiedCount > 0) {
@@ -42,14 +23,13 @@ const AdminUser = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `${user.name} is an Admin now.`,
+                    title: `${user.name} is an Surveyor now.`,
                     showConfirmButton: false,
                     timer: 1500
                   });
             }
         })
     }
-
     const handleDeleteUser = user =>{
         Swal.fire({
             title: "Are you sure?",
@@ -77,13 +57,13 @@ const AdminUser = () => {
 
     }
     return (
-        <div className=''>
+        <div>
             <div className=" flex justify-center items-center">
                 <h3 className="text-3xl  mx-auto my-5 relative z-10 text-gradient-to-r from-gray-800 via-transparent to-gray-800 
                  uppercase border-y-4 border-orange-400 lg:py-4">
-                    Admin Manage Users 
+                    Surveyor home
                 </h3>
-            </div>
+            </div> 
             <div>
                 <table className="table">
                     {/* head */}
@@ -103,7 +83,7 @@ const AdminUser = () => {
                                 <td>{user.email}</td>
                                 <td>
                                     {
-                                        user.role === "admin" ? 'Admin' : <button onClick={ () => handleMakeAdmin(user)}
+                                        user.role === "surveyor" ? 'Surveyor' : <button onClick={ () => handleMakeSurveyor(user)}
                                         className='btn btn-circle bg-orange-500 text-white text-xl'>
                                           <FiEdit></FiEdit>
                                        </button>                                                                           
@@ -120,8 +100,9 @@ const AdminUser = () => {
                     </tbody>
                 </table>
             </div>
+
         </div>
     );
 };
 
-export default AdminUser;
+export default SurveyorHome;
