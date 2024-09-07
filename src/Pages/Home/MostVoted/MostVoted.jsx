@@ -6,7 +6,7 @@ import SurveyCart from "../../Shared/Surveys/SurveyCart";
 const MostVoted = () => {
     const [mostVote, setMostVote] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/suurveys')
+        fetch('https://b9a12-server-side-three.vercel.app/suurveys')
             .then(res => res.json())
             .then(data => {
                 const Most = data.sort((a, b) => b.totalVotes - a.totalVotes);

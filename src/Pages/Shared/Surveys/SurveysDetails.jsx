@@ -19,7 +19,7 @@ const SurveysDetails = () => {
     // const [reported, setReported] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/suurveys/${id}`)
+        fetch(`https://b9a12-server-side-three.vercel.app/suurveys/${id}`)
             .then(res => res.json())
             .then(data => setSurvey(data))
     }, []);

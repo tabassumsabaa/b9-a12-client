@@ -7,7 +7,7 @@ const LatestSurvey = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/suurveys')
+        fetch('https://b9a12-server-side-three.vercel.app/suurveys')
             .then(res => res.json())
             .then(data => {
                 const sortedData = data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));

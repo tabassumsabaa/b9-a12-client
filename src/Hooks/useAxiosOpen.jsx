@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const useAxiosOpen = () => {
     const axiosOpen = axios.create({
-        baseURL: 'http://localhost:5000'
+        baseURL: 'https://b9a12-server-side-three.vercel.app'
     })
     return axiosOpen;
 };
