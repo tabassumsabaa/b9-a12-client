@@ -15,24 +15,6 @@ const AdminUser = () => {
             return res.data;
         }
     })
-
-    // const handleMakeSurveyor = user =>{
-    //     axiosSecure.patch(`/users/suveyor/${user._id}`)
-    //     .then( res =>{
-    //         console.log(res.data);
-    //         if (res.data.modifiedCount > 0) {
-    //             refetch();
-    //             Swal.fire({
-    //                 position: "top-end",
-    //                 icon: "success",
-    //                 title: `${user.name} is an Admin now.`,
-    //                 showConfirmButton: false,
-    //                 timer: 1500
-    //               });
-    //         }
-    //     })
-    // }
-
     const handleMakeAdmin = user =>{
         axiosSecure.patch(`/users/admin/${user._id}`)
         .then( res =>{

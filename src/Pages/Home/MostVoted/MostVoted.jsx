@@ -18,7 +18,7 @@ const MostVoted = () => {
         <div >
             <div className="text-center mt-24 flex justify-center items-center">
                 <h3 className="text-3xl flex items-center my-10 mx-auto absolute text-gradient-to-r from-gray-800 via-transparent to-gray-800 
-                 uppercase border-y-4 py-4">
+                 uppercase border-y-4 py-4 border-orange-400">
                     Most VOTED Survey
                 </h3>
             </div>

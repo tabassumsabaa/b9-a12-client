@@ -126,7 +126,7 @@ const Dashboard = () => {
                             Home</NavLink>
                     </li>
                     <li>
-                        <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='/'>
+                        <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='/work'>
                             <MdAddComment></MdAddComment>
                             About Us</NavLink>
                     </li>
@@ -136,7 +136,7 @@ const Dashboard = () => {
                             Contact Us</NavLink>
                     </li>
                     <li>
-                        <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='/'>
+                        <NavLink className='w-full m-auto flex items-center space-x-2 gap-2' to='/faqs'>
                             <TbHelpOctagonFilled></TbHelpOctagonFilled>
                             HelpCente</NavLink>
                     </li>

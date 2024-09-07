@@ -9,6 +9,9 @@ const AdminHome = () => {
                     Admin home
                 </h3>
             </div>
+            <div className="my-10">
+                <h1 className='text-5xl text-center font-serif text-orange-500'>Welcome Admin! </h1>
+            </div>
         </div>
     );
 };

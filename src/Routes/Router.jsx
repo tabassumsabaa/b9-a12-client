@@ -21,6 +21,10 @@ import SurveyorHome from "../Pages/DashboardElements/SurveyorDash/SurveyorHome";
 import SurveyorMake from "../Pages/DashboardElements/SurveyorDash/SurveyorMake";
 import SurveyorsSurveys from "../Pages/DashboardElements/SurveyorDash/SurveyorsSurveys";
 import Work from "../Pages/Home/Work/Work";
+import Faqs from "../Pages/Home/Home/Faqs/Faqs";
+import Pricing from "../Pages/Home/Pricing/Pricing";
+import Pay from "../Pages/Home/Pricing/Pay";
+
 
 
 
@@ -41,6 +45,18 @@ export const router = createBrowserRouter([
         {
             path: "work",
             element: <Work></Work>
+        },
+        {
+            path: "faqs",
+            element: <Faqs></Faqs>
+        },
+        {
+            path: "pricing",
+            element: <Pricing></Pricing>
+        },
+        {
+            path: "pay",
+            element: <Pay></Pay>
         },
         {
             path: "login",
