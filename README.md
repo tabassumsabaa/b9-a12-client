@@ -27,3 +27,8 @@ Welcome to **CivicSurvey**, a platform designed for efficient survey management 
 - **FAQ and Help Section**: Helpful guides and FAQs to assist users in navigating the platform.
 
 ### Getting Started
+Follow these steps to set up the project locally:
+
+Clone the Repository:
+git clone [https://github.com/programming-hero-web-course1/b9a12-client-side-tabassumsabaa.git]
+
